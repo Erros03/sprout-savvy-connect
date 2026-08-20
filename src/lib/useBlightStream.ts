@@ -67,9 +67,46 @@ export function useBlightStream() {
 
   useEffect(() => {
     if (FIREBASE_ENABLED) {
-      // TODO: onValue(ref(db, 'detections'), snap => setEvents(...))
-      return;
+      let cleanup = () => {};
+      let cancelled = false;
+
+      (async () => {
+        const [{ getDb }, { ref, onValue, query, limitToLast }, schema] = await Promise.all([
+          import("./firebase"),
+          import("firebase/database"),
+          import("./blightSchema"),
+        ]);
+        const db = getDb();
+        if (!db || cancelled) return;
+
+        const offDetections = onValue(
+          query(ref(db, "detections"), limitToLast(40)),
+          (snap) => {
+            const list = schema.normalizeDetections(snap.val());
+            setEvents(list);
+            setNextId((list[0]?.id ?? 0) + 1);
+          },
+          (err) => console.error("[firebase] detections listener failed:", err),
+        );
+
+        const offHardware = onValue(
+          ref(db, "hardware"),
+          (snap) => setHardware(schema.normalizeHardware(snap.val(), INITIAL_HARDWARE)),
+          (err) => console.error("[firebase] hardware listener failed:", err),
+        );
+
+        cleanup = () => {
+          offDetections();
+          offHardware();
+        };
+      })();
+
+      return () => {
+        cancelled = true;
+        cleanup();
+      };
     }
+
     const seed = Array.from({ length: 8 }, (_, i) => makeEvent(400 - i));
     setEvents(seed);
 

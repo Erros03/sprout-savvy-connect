@@ -1,0 +1,108 @@
+{
+  "detections": {
+    "-O1Healthy01": {
+      "label": "Healthy",
+      "confidence": 94,
+      "action": "Accepted",
+      "diameterMm": 61,
+      "size": "Medium",
+      "ripeness": "Ripe",
+      "timestamp": 1756000000000
+    },
+    "-O2Healthy02": {
+      "label": "Healthy",
+      "confidence": 91,
+      "action": "Accepted",
+      "diameterMm": 58,
+      "size": "Medium",
+      "ripeness": "Ripe",
+      "timestamp": 1756000002600
+    },
+    "-O3EarlyBlight01": {
+      "label": "Early Blight",
+      "confidence": 89,
+      "action": "Rejected",
+      "diameterMm": 45,
+      "size": "Small",
+      "ripeness": "Unripe",
+      "timestamp": 1756000005200
+    },
+    "-O4Healthy03": {
+      "label": "Healthy",
+      "confidence": 96,
+      "action": "Accepted",
+      "diameterMm": 72,
+      "size": "Large",
+      "ripeness": "Ripe",
+      "timestamp": 1756000007800
+    },
+    "-O5LateBlight01": {
+      "label": "Late Blight",
+      "confidence": 87,
+      "action": "Rejected",
+      "diameterMm": 49,
+      "size": "Small",
+      "ripeness": "Ripe",
+      "timestamp": 1756000010400
+    },
+    "-O6Healthy04": {
+      "label": "Healthy",
+      "confidence": 92,
+      "action": "Accepted",
+      "diameterMm": 64,
+      "size": "Medium",
+      "ripeness": "Unripe",
+      "timestamp": 1756000013000
+    },
+    "-O7EarlyBlight02": {
+      "label": "Early Blight",
+      "confidence": 85,
+      "action": "Rejected",
+      "diameterMm": 55,
+      "size": "Medium",
+      "ripeness": "Ripe",
+      "timestamp": 1756000015600
+    },
+    "-O8Healthy05": {
+      "label": "Healthy",
+      "confidence": 93,
+      "action": "Accepted",
+      "diameterMm": 67,
+      "size": "Medium",
+      "ripeness": "Ripe",
+      "timestamp": 1756000018200
+    }
+  },
+  "hardware": {
+    "camera": {
+      "name": "YOLO Vision Camera",
+      "detail": "Laptop webcam · 30 FPS inference",
+      "state": "online"
+    },
+    "arduino": {
+      "name": "Arduino Uno",
+      "detail": "Serial COM3 · 9600 baud",
+      "state": "online"
+    },
+    "conveyor": {
+      "name": "Conveyor Belt",
+      "detail": "Motor driver · 0.4 m/s",
+      "state": "online"
+    },
+    "servo": {
+      "name": "Servo Motor (Sorter)",
+      "detail": "Reject gate · 0°/90°",
+      "state": "standby"
+    },
+    "sensors": {
+      "name": "Proximity Sensors",
+      "detail": "IR pair · entry & exit",
+      "state": "online"
+    },
+    "power": {
+      "name": "Power Supply",
+      "detail": "12V 5A regulated",
+      "state": "online"
+    }
+  }
+}
